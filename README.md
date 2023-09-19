@@ -1,6 +1,7 @@
-# Srub
+# Srub - Text Chat App with Global Search created using Flutter + Firebase.
 ![Alt text](images/logo.png)
-Text chat app with user search.
 
-Created using Flutter + Firebase.
+
+
+
 
