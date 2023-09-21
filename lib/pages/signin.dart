@@ -73,13 +73,17 @@ class _SignInState extends State<SignIn> {
         child: Stack(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height / 3.5,
+              height: MediaQuery.of(context).size.height / 1.5,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: LinearGradient(colors: [
+                  Color.fromARGB(255, 83, 223, 236),
+                  Color.fromARGB(255, 46, 140, 37)
+                ], begin: Alignment.topLeft, end: Alignment.topRight),
+                /*gradient: LinearGradient(
                     colors: [Color(0xFF7f30fe), Color(0xFF6380fb)],
                     begin: Alignment.topLeft,
-                    end: Alignment.topRight),
+                    end: Alignment.topRight),*/
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.elliptical(
                       MediaQuery.of(context).size.width, 105.0),
@@ -92,7 +96,7 @@ class _SignInState extends State<SignIn> {
                 children: [
                   Center(
                     child: Text(
-                      "Whatsapp for Aloysius",
+                      "Srub",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30.0,
@@ -101,7 +105,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   Center(
                     child: Text(
-                      "Login to your account",
+                      "Sign-In to your account",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -251,7 +255,7 @@ class _SignInState extends State<SignIn> {
                                             width: 130,
                                             padding: EdgeInsets.all(10),
                                             decoration: BoxDecoration(
-                                                color: Colors.purple,
+                                                color: Color(0xFF6380fb),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         10.0)),

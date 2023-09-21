@@ -70,12 +70,12 @@ class _ChatPageState extends State<ChatPage> {
                   bottomLeft:
                       sendByMe ? Radius.circular(24) : Radius.circular(0)),
               color: sendByMe
-                  ? Color.fromARGB(255, 155, 227, 116)
-                  : Color.fromARGB(255, 254, 173, 119)),
+                  ? Color.fromRGBO(157, 253, 74, 1)
+                  : Color.fromRGBO(66, 255, 246, 1)),
           child: Text(
             message,
             style: TextStyle(
-                color: Colors.black,
+                color: const Color.fromARGB(255, 0, 0, 0),
                 fontSize: 15.0,
                 fontWeight: FontWeight.w500),
           ),
@@ -145,81 +145,128 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 94, 215, 115),
-      body: Container(
-        padding: EdgeInsets.only(top: 60.0),
-        child: Stack(
-          children: [
-            Container(
-                margin: EdgeInsets.only(top: 40.0),
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 1.12,
-                decoration: BoxDecoration(
-                    color: Color.fromARGB(237, 37, 41, 37),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30))),
-                child: chatMessage()),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios_new_outlined,
-                      color: Color.fromARGB(255, 0, 0, 0),
-                    ),
-                  ),
-                  Text(
-                    widget.name,
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
+    return Container(
+      child: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 83, 223, 236),
+                Color.fromARGB(255, 46, 140, 37),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
             ),
-            Container(
-              margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-              alignment: Alignment.bottomCenter,
-              child: Material(
-                elevation: 5.0,
-                borderRadius: BorderRadius.circular(30),
-                child: Container(
-                  padding: EdgeInsets.only(left: 30),
+          ),
+          padding: EdgeInsets.only(top: 60.0),
+          child: Stack(
+            children: [
+              Container(
+                  margin: EdgeInsets.only(top: 50.0),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 1.12,
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 56, 53, 53),
-                      borderRadius: BorderRadius.circular(30)),
-                  child: TextField(
-                    controller: messagecontroller,
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Type a message",
-                        hintStyle: TextStyle(
-                            color: Color.fromARGB(119, 150, 150, 150)),
-                        suffixIcon: GestureDetector(
+                      color: Color.fromARGB(236, 0, 0, 0),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))),
+                  child: chatMessage()),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 20.0,
+                  bottom: 20,
+                ),
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Home()));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Color.fromARGB(255, 83, 223, 236),
+                              Color.fromARGB(255, 46, 140, 37)
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.arrow_back_ios_new_outlined,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Text(
+                      widget.name,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+                alignment: Alignment.bottomCenter,
+                child: Material(
+                  elevation: 5.0,
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    padding: EdgeInsets.only(left: 30),
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 56, 53, 53),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: TextField(
+                      controller: messagecontroller,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Type a message",
+                          hintStyle: TextStyle(
+                              color: Color.fromARGB(119, 150, 150, 150)),
+                          suffixIcon: GestureDetector(
                             onTap: () {
                               addMessage(true);
                             },
-                            child: Icon(
-                              Icons.send_rounded,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                            ))),
-                    style: TextStyle(
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w500),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color.fromARGB(255, 83, 223, 236),
+                                    Color.fromARGB(255, 46, 140, 37)
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.send_rounded,
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                ),
+                              ),
+                            ),
+                          )),
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

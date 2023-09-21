@@ -79,8 +79,7 @@ class DatabaseMethods {
     return FirebaseFirestore.instance
         .collection("chatrooms")
         .orderBy("time", descending: true)
-        .where("users",
-            arrayContains: myUsername!) // check if myusername is present or
+        .where("users", arrayContains: myUsername)
         .snapshots();
   }
 }

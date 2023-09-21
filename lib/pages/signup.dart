@@ -107,7 +107,7 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   Center(
                     child: Text(
-                      "Whatsapp for Aloysius",
+                      "Srub",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30.0,
@@ -319,8 +319,7 @@ class _SignUpState extends State<SignUp> {
                                             width: 130,
                                             padding: EdgeInsets.all(10),
                                             decoration: BoxDecoration(
-                                                color: Color.fromARGB(
-                                                    255, 51, 179, 194),
+                                                color: Color(0xFF6380fb),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         10.0)),

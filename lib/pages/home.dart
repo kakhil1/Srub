@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:messagingapp/pages/about.dart';
 import 'package:messagingapp/pages/chatpage.dart';
+import 'package:messagingapp/pages/signin.dart';
 import 'package:messagingapp/service/database.dart';
 import 'package:messagingapp/service/shared.pref.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -108,100 +111,157 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 94, 215, 115),
-      body: Container(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 20.0, right: 20.0, top: 50.0, bottom: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  search
-                      ? Expanded(
-                          child: TextField(
-                          onChanged: (value) {
-                            initiateSearch(value.toUpperCase());
-                          },
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Search Users',
-                              hintStyle: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w500)),
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w500),
-                        ))
-                      : Text(
-                          "Srub",
-                          style: TextStyle(
-                              color: const Color.fromARGB(255, 0, 0, 0),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 22.0),
-                        ),
-                  GestureDetector(
-                    onTap: () {
-                      search = true;
-                      setState(() {});
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        borderRadius: BorderRadius.circular(60),
-                      ),
-                      child: search
-                          ? GestureDetector(
-                              onTap: () {
-                                search = false;
-                                setState(() {});
-                              },
-                              child: Icon(
-                                Icons.close,
-                                color: Color(0Xffc199cd),
-                              ),
-                            )
-                          : Icon(
-                              Icons.search,
-                              color: Color.fromARGB(255, 29, 121, 78),
-                            ),
-                    ),
-                  )
-                ],
-              ),
+    return Container(
+      child: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 83, 223, 236),
+                Color.fromARGB(255, 46, 140, 37),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
             ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-              width: MediaQuery.of(context).size.width,
-              height: search
-                  ? MediaQuery.of(context).size.height / 1.2
-                  : MediaQuery.of(context).size.height / 1.15,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(231, 34, 33, 36),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20.0, top: 50.0, bottom: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    search
+                        ? Expanded(
+                            child: TextField(
+                            onChanged: (value) {
+                              initiateSearch(value.toUpperCase());
+                            },
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Search Users',
+                                hintStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w500)),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w500),
+                          ))
+                        : GestureDetector(
+                            onTap: () {
+                              //_auth.signOut();
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => About()));
+                            },
+                            child: Text(
+                              "Srub(ShieldX Project)",
+                              style: TextStyle(
+                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 22.0),
+                            ),
+
+                            /*child: Icon(
+                              Icons.exit_to_app_sharp,
+                            ),*/
+                          ),
+                    GestureDetector(
+                      onTap: () {
+                        search = true;
+                        setState(() {});
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          borderRadius: BorderRadius.circular(60),
+                        ),
+                        child: search
+                            ? GestureDetector(
+                                onTap: () {
+                                  search = false;
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color.fromARGB(255, 83, 223, 236),
+                                        Color.fromARGB(255, 46, 140, 37)
+                                      ],
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ),
+                                    borderRadius: BorderRadius.circular(25),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.close,
+                                      size: 30.0,
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color.fromARGB(255, 83, 223, 236),
+                                      Color.fromARGB(255, 46, 140, 37)
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.search,
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                  ),
+                                ),
+                              ),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              child: Column(
-                children: [
-                  search
-                      ? ListView(
-                          padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                          primary: false,
-                          shrinkWrap: true,
-                          children: tempSearchStore.map((element) {
-                            return buildResultCard(element);
-                          }).toList())
-                      : ChatRoomList(),
-                ],
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+                width: MediaQuery.of(context).size.width,
+                height: search
+                    ? MediaQuery.of(context).size.height / 1.2
+                    : MediaQuery.of(context).size.height / 1.1,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(231, 0, 0, 0),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    search
+                        ? ListView(
+                            padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                            primary: false,
+                            shrinkWrap: true,
+                            children: tempSearchStore.map((element) {
+                              return buildResultCard(element);
+                            }).toList())
+                        : ChatRoomList(),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -234,7 +294,7 @@ class _HomeState extends State<Home> {
             padding: EdgeInsets.all(18),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
+              //borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
               children: [

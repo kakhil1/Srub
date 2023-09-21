@@ -41,13 +41,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         child: Stack(
           children: [
             Container(
-                height: MediaQuery.of(context).size.height / 3.5,
+                height: MediaQuery.of(context).size.height / 3,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Color(0xFF7f30fe), Color(0xFF6380fb)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight),
+                    gradient: LinearGradient(colors: [
+                      Color.fromARGB(255, 83, 223, 236),
+                      Color.fromARGB(255, 46, 140, 37)
+                    ], begin: Alignment.topLeft, end: Alignment.topRight),
                     borderRadius: BorderRadius.vertical(
                         bottom: Radius.elliptical(
                             MediaQuery.of(context).size.width, 105.0)))),
@@ -60,15 +60,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     "Password Recovery",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 24.0,
+                        fontSize: 30.0,
                         fontWeight: FontWeight.bold),
                   )),
                   Center(
                       child: Text(
-                    "Enter your mail",
+                    "Enter your E-Mail",
                     style: TextStyle(
-                        color: Color(0xFFbbb0ff),
-                        fontSize: 18.0,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 20.0,
                         fontWeight: FontWeight.w500),
                   )),
                   SizedBox(
