@@ -1,6 +1,6 @@
-# Srub - Text Chat App with Global Search created using Flutter + Firebase. (For Android Devices)
+# Srub (SHIELD X VERSION) - Text Chat App with Global Search created using Flutter + Firebase. (For Android Devices)
 
-<a href='https://github.com/kakhil1/Srub/releases/download/v1.0.0/Srub.apk'><img alt=' Get it on Google Play' src='https://www.pngall.com/wp-content/uploads/2/Download-Button-PNG-File-Download-Free.png' height='80px'/></a>
+<a href='https://github.com/kakhil1/Srub/releases/download/v2.0.0/Srub.apk'><img alt=' Get it on Google Play' src='https://www.pngall.com/wp-content/uploads/2/Download-Button-PNG-File-Download-Free.png' height='80px'/></a>
 
 ![Alt text](images/logo.png)
 
